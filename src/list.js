@@ -3,10 +3,10 @@ export default class List {
         this.title = title;
         this.list = [];
     }
-    removeItem(index) {
+    removeTask(index) {
         this.list.splice(index, 1);
     }
-    addItem(item) {
+    addTask(item) {
         this.list.push(item);
     }
 }

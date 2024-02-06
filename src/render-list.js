@@ -55,7 +55,7 @@ function newTaskForm() {
     })
     
    function submit() {
-        currentList.addItem(new Task(title.value, description.value, date.value, +selectedPriority))
+        currentList.addTask(new Task(title.value, description.value, date.value, +selectedPriority))
         renderList(currentList);
         dialog.close();
         document.querySelector('form').reset();

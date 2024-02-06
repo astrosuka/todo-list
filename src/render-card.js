@@ -32,7 +32,7 @@ export default function renderCard(task, list) {
     let deleteButton = document.createElement('button');
     deleteButton.textContent = 'delete';
     deleteButton.addEventListener('click', () => {
-        list.removeItem(list.list.indexOf(task));
+        list.removeTask(list.list.indexOf(task));
         renderList(list);
     })
 
