@@ -1,6 +1,5 @@
-import Task from './task.js'
 import List from './list.js'
-import renderList from './render-list.js';
+import renderList from './render-tasks.js';
 import './style.css';
 
 const allLists = [];

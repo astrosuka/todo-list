@@ -1,4 +1,4 @@
-import renderList from "./render-list";
+import renderTasks from "./render-tasks";
 
 export default function renderCard(task, list) {
     let card = document.createElement('div');
@@ -33,7 +33,7 @@ export default function renderCard(task, list) {
     deleteButton.textContent = 'delete';
     deleteButton.addEventListener('click', () => {
         list.removeTask(list.list.indexOf(task));
-        renderList(list);
+        renderTasks(list);
     })
 
 
