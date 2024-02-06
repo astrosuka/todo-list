@@ -8,8 +8,11 @@ allLists.push(defaultList);
 let currentList;
 currentList = defaultList;
 
-function createList(name) {
-    allLists.push(new List(name));
+function createList() {
+    allLists.push(new List(prompt('Name your new list', 'New List' )));
+    currentList = allLists[allLists.length - 1];
+    renderTasks(currentList);
+    renderMenu();
 }
 
 //add new list
@@ -17,12 +20,7 @@ const navMenu = document.querySelector('#nav-menu');
 let createListButton = document.createElement('button');
 createListButton.textContent = 'add new list'
 navMenu.appendChild(createListButton);
-createListButton.addEventListener('click', () => {
-    createList(prompt('Name your new list', 'New List' ))
-    currentList = allLists[allLists.length - 1];
-    renderTasks(currentList);
-    renderMenu();
-});
+createListButton.addEventListener('click', createList);
 
 function renderMenu() {
     const listMenu = document.querySelector('#list-menu');
