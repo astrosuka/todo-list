@@ -24,6 +24,7 @@ createListButton.addEventListener('click', () => {
 
 displayAllLists();
 
+// render list menu
 function displayAllLists() {
     const listMenu = document.querySelector('#list-menu');
     listMenu.textContent = '';
@@ -46,16 +47,22 @@ function displayAllLists() {
     }
 
     function removeList(index) {
-        console.log(allLists)
+        // console.log(allLists)
         allLists.splice(index, 1);
-        //update DOM. HACER UNA FUNCION QUE REDIBUJE TODO ASI TAL COMO ESTA LA COSA
+        if ((index - 1) >= 0){
+            renderList(allLists[index -1]);
+
+        } else {
+            const wrapper = document.querySelector('#wrapper');
+            wrapper.textContent = '';
+        }
     }
 }
 
 
-document.body.addEventListener('click', () => {
-    console.log(allLists);
-})
+// document.body.addEventListener('click', () => {
+//     console.log(allLists);
+// })
 
 renderList(currentList);
 
