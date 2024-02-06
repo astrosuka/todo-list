@@ -1,6 +1,8 @@
+import { renderButton } from './newListButton.js';
 import List from './list.js'
 import renderTasks from './render-tasks.js';
 import './style.css';
+
 
 const allLists = [];
 const defaultList = new List('My Tasks');
@@ -8,19 +10,28 @@ allLists.push(defaultList);
 let currentList;
 currentList = defaultList;
 
-function createList() {
+export function createList() {
     allLists.push(new List(prompt('Name your new list', 'New List' )));
     currentList = allLists[allLists.length - 1];
     renderTasks(currentList);
     renderMenu();
 }
 
-//add new list
-const navMenu = document.querySelector('#nav-menu');
-let createListButton = document.createElement('button');
-createListButton.textContent = 'add new list'
-navMenu.appendChild(createListButton);
-createListButton.addEventListener('click', createList);
+function removeList(index) {
+    allLists.splice(index, 1);
+    
+    if (allLists.length === 0){
+        currentList = [];
+        const wrapper = document.querySelector('#wrapper');
+        wrapper.textContent = '';
+    } else if (index === 0) {
+        currentList = (allLists[0]);
+        renderTasks(allLists[0]);
+    } else {
+        currentList = (allLists[index - 1]);
+        renderTasks(allLists[index -1]);
+    }
+}
 
 function renderMenu() {
     const listMenu = document.querySelector('#list-menu');
@@ -42,25 +53,10 @@ function renderMenu() {
             renderMenu();
         })
     }
-
-    function removeList(index) {
-        allLists.splice(index, 1);
-        
-        if (allLists.length === 0){
-            currentList = [];
-            const wrapper = document.querySelector('#wrapper');
-            wrapper.textContent = '';
-        } else if (index === 0) {
-            currentList = (allLists[0]);
-            renderTasks(allLists[0]);
-        } else {
-            currentList = (allLists[index - 1]);
-            renderTasks(allLists[index -1]);
-        }
-    }
 }
 
 renderMenu();
+renderButton();
 renderTasks(currentList);
 
 export { currentList };
