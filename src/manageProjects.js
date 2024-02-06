@@ -12,8 +12,8 @@ function setCurrentList(selectedList) {
     currentList = selectedList;
 } 
 
-function createList() {
-    allLists.push(new List(prompt('Name your new list', 'New List' )));
+function createList(name) {
+    allLists.push(new List(name));
     currentList = allLists[allLists.length - 1];
     renderTasks(currentList);
     renderMenu();
