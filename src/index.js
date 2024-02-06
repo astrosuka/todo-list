@@ -21,12 +21,10 @@ createListButton.addEventListener('click', () => {
     createList(prompt('Name your new list', 'New List' ))
     currentList = allLists[allLists.length - 1];
     renderTasks(currentList);
-    displayMenu();
+    renderMenu();
 });
 
-displayMenu();
-
-function displayMenu() {
+function renderMenu() {
     const listMenu = document.querySelector('#list-menu');
     listMenu.textContent = '';
 
@@ -43,7 +41,7 @@ function displayMenu() {
         listMenu.append(removeListButton);
         removeListButton.addEventListener('click', () => {
             removeList(allLists.indexOf(i));
-            displayMenu();
+            renderMenu();
         })
     }
 
@@ -64,6 +62,7 @@ function displayMenu() {
     }
 }
 
+renderMenu();
 renderTasks(currentList);
 
 export { currentList };
