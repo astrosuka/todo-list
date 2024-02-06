@@ -1,6 +1,5 @@
 import List from './list.js'
 import renderTasks from './renderTasks.js';
-import { renderMenu } from './renderMenu.js';
 
 export const allLists = [];
 const defaultList = new List('My Tasks');
@@ -16,7 +15,6 @@ function createList(name) {
     allLists.push(new List(name));
     currentList = allLists[allLists.length - 1];
     renderTasks(currentList);
-    renderMenu();
 }
 
 export function removeList(index) {

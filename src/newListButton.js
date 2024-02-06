@@ -1,4 +1,5 @@
 import { createList } from './manageProjects.js';
+import { renderMenu } from './renderMenu.js';
 
 export function renderButton() {
     const navMenu = document.querySelector('#nav-menu');
@@ -23,6 +24,7 @@ export function renderButton() {
     submitButton.addEventListener('click', (e) => {
         e.preventDefault();
         createList(listTilte.value);
+        renderMenu();
         dialog.close();
         document.querySelector('#add-list-form').reset();
 
