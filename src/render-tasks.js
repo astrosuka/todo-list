@@ -5,7 +5,7 @@ import { currentList } from './index.js';
 newTaskForm();
 const dialog = document.querySelector('#add-task');
 
-export default function renderList(list) {
+export default function renderTasks(list) {
     const wrapper = document.querySelector('#wrapper');
     const listTitle = document.createElement('h1');
     wrapper.textContent = '';
@@ -56,7 +56,7 @@ function newTaskForm() {
     
    function submit() {
         currentList.addTask(new Task(title.value, description.value, date.value, +selectedPriority))
-        renderList(currentList);
+        renderTasks(currentList);
         dialog.close();
         document.querySelector('form').reset();
     }

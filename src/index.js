@@ -1,5 +1,5 @@
 import List from './list.js'
-import renderList from './render-tasks.js';
+import renderTasks from './render-tasks.js';
 import './style.css';
 
 const allLists = [];
@@ -20,13 +20,13 @@ navMenu.appendChild(createListButton);
 createListButton.addEventListener('click', () => {
     createList(prompt('Name your new list', 'New List' ))
     currentList = allLists[allLists.length - 1];
-    renderList(currentList);
-    displayListMenu();
+    renderTasks(currentList);
+    displayMenu();
 });
 
-displayListMenu();
+displayMenu();
 
-function displayListMenu() {
+function displayMenu() {
     const listMenu = document.querySelector('#list-menu');
     listMenu.textContent = '';
 
@@ -36,14 +36,14 @@ function displayListMenu() {
         listMenu.append(listName);
         listName.addEventListener('click', () => {
             currentList = i;
-            renderList(currentList);
+            renderTasks(currentList);
         })
         const removeListButton = document.createElement('button');
         removeListButton.textContent = 'x'
         listMenu.append(removeListButton);
         removeListButton.addEventListener('click', () => {
             removeList(allLists.indexOf(i));
-            displayListMenu();
+            displayMenu();
         })
     }
 
@@ -56,14 +56,14 @@ function displayListMenu() {
             wrapper.textContent = '';
         } else if (index === 0) {
             currentList = (allLists[0]);
-            renderList(allLists[0]);
+            renderTasks(allLists[0]);
         } else {
             currentList = (allLists[index - 1]);
-            renderList(allLists[index -1]);
+            renderTasks(allLists[index -1]);
         }
     }
 }
 
-renderList(currentList);
+renderTasks(currentList);
 
 export { currentList };
