@@ -1,6 +1,6 @@
-import renderCard from './render-card.js'
+import renderCard from './renderCard.js'
 import Task from './task.js';
-import { currentList } from './index.js';
+import { currentList } from './manageProjects.js';
 
 newTaskForm();
 const dialog = document.querySelector('#add-task');

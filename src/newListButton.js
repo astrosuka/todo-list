@@ -1,4 +1,4 @@
-import { createList } from './index.js';
+import { createList } from './manageProjects.js';
 
 export function renderButton() {
     const navMenu = document.querySelector('#nav-menu');

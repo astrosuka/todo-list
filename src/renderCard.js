@@ -1,4 +1,4 @@
-import renderTasks from "./render-tasks";
+import renderTasks from "./renderTasks";
 
 export default function renderCard(task, list) {
     let card = document.createElement('div');
