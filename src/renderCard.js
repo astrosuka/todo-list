@@ -9,14 +9,21 @@ export default function renderCard(task, list) {
     title.textContent = task.title;
 
     let description = document.createElement('p');
+    description.classList.add('description');
     description.textContent = task.description;
 
     let date = document.createElement('p');
-    date.textContent = task.dueDate;
+    date.classList.add('date');
+    if (task.dueDate !== '') {
+        date.textContent = 'due date: ' + task.dueDate;
+    } else {
+        date.textContent = '';
+    }
 
     let priority = document.createElement('div');
     priority.classList.add('priority');
     priority.textContent = task.priority;
+    getCurrentPriority();
 
     priority.addEventListener('click', () => {
         if (task.priority === 1) {
@@ -32,8 +39,15 @@ export default function renderCard(task, list) {
 
         }
         priority.textContent = task.priority;
+        getCurrentPriority();
         populateStorage();
     })
+
+    function getCurrentPriority() {
+        priority.className = 'priority';
+        priority.classList.add(`priority-${task.priority}`);
+        return task.priority;
+    }
 
     let deleteButton = document.createElement('button');
     deleteButton.textContent = 'delete';
@@ -41,9 +55,10 @@ export default function renderCard(task, list) {
         list.removeTask(list.list.indexOf(task));
         populateStorage();
         renderTasks(list);
+        console.log('render card')
     })
 
 
-    card.append(title, description, date, priority, deleteButton);
+    card.append(title, deleteButton, priority, description, date);
     return card;
 }

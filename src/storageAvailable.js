@@ -15,7 +15,6 @@ function loadStorage() {
     let i = 0;
     for (const storedList of userData){
         createList(storedList.title);
-        console.log(storedList);
         for (const storedTask of storedList.list) {
             console.log(storedTask);
             allLists[i].addTask(new Task(storedTask.title, storedTask.description, storedTask.dueDate, storedTask._priority));

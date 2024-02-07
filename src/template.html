@@ -7,19 +7,20 @@
 </head>
 <body>
     <div id="nav-menu">
+        <button id="create-list-button">add new list</button>
         <ul id="list-menu"></ul>
     </div>
     <div id="wrapper"></div>
     <dialog id="add-task">
         <form>
-            <div>
+            <div class="block-label-input">
                 <label for="title">title:</label>
-                <input type="text" id="title">
+                <input type="text" id="title" required>
             </div>
             
-            <div>
+            <div class="block-label-input">
                 <label for="description">description:</label>
-                <input type="text" id="description">
+                <textarea id="description" rows="4" cols="30"></textarea>
             </div>
             
             <div>
@@ -46,7 +47,7 @@
                 </div>
               </fieldset>
 
-            <div>
+            <div class="dialog-buttons">
                 <button id="submit-button">submit</button>
                 <button id="cancel-button">cancel</button>
             </div>
@@ -55,11 +56,11 @@
     <dialog id="add-list">
         <form id="add-list-form">
             <div>
-                <label for="list-title">list name:</label>
-                <input type="text" id="list-title">
+                <label for="list-title"></label>
+                <input type="text" id="list-title" required placeholder="List Name">
             </div> 
-            <div>
-                <button id="list-submit-button">add</button>
+            <div class="dialog-buttons">
+                <button type="submit" id="list-submit-button">add</button>
                 <button id="list-cancel-button">cancel</button>
             </div>
         </form>

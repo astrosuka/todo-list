@@ -1,4 +1,4 @@
-import { renderButton } from './newListButton.js';
+import { addListButton } from './newListButton.js';
 import renderTasks from './renderTasks.js';
 import './style.css';
 import { renderMenu } from './renderMenu.js';
@@ -14,7 +14,7 @@ import { loadStorage, populateStorage } from './storageAvailable.js';
         createDefault();
     }
     renderMenu();
-    renderButton();
+    addListButton();
     if (allLists.length !== 0) {
         renderTasks(currentList);
     }

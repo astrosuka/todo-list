@@ -1,12 +1,9 @@
 import { createList } from './manageProjects.js';
 import { renderMenu } from './renderMenu.js';
 
-export function renderButton() {
-    const navMenu = document.querySelector('#nav-menu');
+export function addListButton() {
     const dialog = document.querySelector('#add-list');
-    const createListButton = document.createElement('button');
-    createListButton.textContent = 'add new list';
-    navMenu.appendChild(createListButton);
+    const createListButton = document.querySelector('#create-list-button')
     createListButton.addEventListener('click', () => {
         dialog.showModal();
     });
