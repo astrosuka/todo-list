@@ -1,11 +1,1 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To Do</title>
-<script defer src="main.js"></script></head>
-<body>
-    
-</body>
-</html>
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>To Do</title><script defer="defer" src="main.js"></script></head><body><div id="nav-menu"><button id="create-list-button">add new list</button><ul id="list-menu"></ul></div><div id="wrapper"></div><dialog id="add-task"><form><div class="block-label-input"><label for="title">title:</label> <input id="title" required></div><div class="block-label-input"><label for="description">description:</label> <textarea id="description" rows="4" cols="30"></textarea></div><div><label for="date">date:</label> <input type="date" id="date"></div><fieldset><legend>priority:</legend><div><input type="radio" id="low" name="priority" value="1"/> <label for="low">Low</label></div><div><input type="radio" id="medium" name="priority" value="2" checked="checked"/> <label for="medium">Medium</label></div><div><input type="radio" id="high" name="priority" value="3"/> <label for="high">High</label></div></fieldset><div class="dialog-buttons"><button id="submit-button">submit</button> <button id="cancel-button">cancel</button></div></form></dialog><dialog id="add-list"><form id="add-list-form"><div><label for="list-title"></label> <input id="list-title" required placeholder="List Name"></div><div class="dialog-buttons"><button type="submit" id="list-submit-button">add</button> <button id="list-cancel-button">cancel</button></div></form></dialog></body></html>

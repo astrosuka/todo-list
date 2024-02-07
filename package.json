@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "build": "webpack",
-    "dev": "webpack serve"
+    "dev": "webpack serve",
+    "deployPage": "git subtree push --prefix dist origin gh-pages"
   },
   "keywords": [],
   "author": "",
