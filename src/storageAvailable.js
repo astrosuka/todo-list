@@ -12,13 +12,13 @@ function populateStorage() {
 function loadStorage() {
     const userData = JSON.parse(localStorage.getItem('userdata'));
     
+    let i = 0;
     for (const storedList of userData){
         createList(storedList.title);
-        let i = 0;
         console.log(storedList);
         for (const storedTask of storedList.list) {
             console.log(storedTask);
-            allLists[i].addTask(new Task(storedTask.title, storedTask.description, storedTask.date, storedTask._priority));
+            allLists[i].addTask(new Task(storedTask.title, storedTask.description, storedTask.dueDate, storedTask._priority));
         }
         i++
     }
