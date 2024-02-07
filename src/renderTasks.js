@@ -18,6 +18,7 @@ export default function renderTasks(list) {
     }
 
     const addItemButton = document.createElement('button');
+    addItemButton.classList.add('add-new-task');
     addItemButton.textContent = 'Add New Task';
     addItemButton.addEventListener('click', () => {
         dialog.showModal();
