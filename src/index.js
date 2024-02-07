@@ -15,5 +15,7 @@ import { loadStorage, populateStorage } from './storageAvailable.js';
     }
     renderMenu();
     renderButton();
-    renderTasks(currentList);
+    if (allLists.length !== 0) {
+        renderTasks(currentList);
+    }
 })();
