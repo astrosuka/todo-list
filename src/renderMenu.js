@@ -6,16 +6,19 @@ export function renderMenu() {
     listMenu.textContent = '';
 
     for (let i of allLists) {
-        const listName = document.createElement('li');
-        listName.textContent = i.title;
-        listMenu.append(listName);
-        listName.addEventListener('click', () => {
+        const menuItem = document.createElement('li');
+        const listNameInMenu = document.createElement('div');
+
+        listNameInMenu.textContent = i.title;
+        menuItem.append(listNameInMenu);
+        listMenu.append(menuItem);
+        listNameInMenu.addEventListener('click', () => {
             setCurrentList(i);
             renderTasks(currentList);
         });
         const removeListButton = document.createElement('button');
         removeListButton.textContent = 'x';
-        listMenu.append(removeListButton);
+        menuItem.append(removeListButton);
         removeListButton.addEventListener('click', () => {
             removeList(allLists.indexOf(i));
             renderMenu();
