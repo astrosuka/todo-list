@@ -12,19 +12,19 @@ export default function renderTasks(list) {
     wrapper.textContent = '';
     listTitle.textContent = list.title;
     wrapper.appendChild(listTitle);
-    
-    for (let item of list.list) {        
-        wrapper.appendChild(renderCard(item, list));
-    }
 
     const addItemButton = document.createElement('button');
     addItemButton.classList.add('add-new-task');
-    addItemButton.textContent = 'Add New Task';
+    addItemButton.textContent = 'add new task';
     addItemButton.addEventListener('click', () => {
         dialog.showModal();
     })
 
     wrapper.appendChild(addItemButton);
+
+    for (let item of list.list) {        
+        wrapper.appendChild(renderCard(item, list));
+    }
 }
 
 function newTaskForm() {
