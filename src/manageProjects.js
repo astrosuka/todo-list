@@ -9,7 +9,7 @@ function createDefault() {
     allLists.push(defaultList);
     setCurrentList(defaultList);
 }
-// currentList = defaultList;
+
 let currentList;
 
 function setCurrentList(selectedList) {
@@ -28,14 +28,14 @@ function removeList(index) {
     populateStorage();
 
     if (allLists.length === 0){
-        currentList = [];
+        setCurrentList([]);
         const wrapper = document.querySelector('#wrapper');
         wrapper.textContent = '';
     } else if (index === 0) {
-        currentList = (allLists[0]);
+        setCurrentList(allLists[0]);
         renderTasks(allLists[0]);
     } else {
-        currentList = (allLists[index - 1]);
+        setCurrentList(allLists[index - 1]);
         renderTasks(allLists[index -1]);
     }
 }
