@@ -16,18 +16,23 @@ export default function renderCard(task, list) {
 
     let priority = document.createElement('div');
     priority.classList.add('priority');
-    priority.textContent = 'priority: ' + task.priority;
+    priority.textContent = task.priority;
+
     priority.addEventListener('click', () => {
         if (task.priority === 1) {
             task.priority = 2;
+ 
         } else
         if (task.priority === 2) {
             task.priority = 3;
+
         } else
         if (task.priority === 3) {
             task.priority = 1;
+
         }
-        priority.textContent = 'priority: ' + task.priority;
+        priority.textContent = task.priority;
+        populateStorage();
     })
 
     let deleteButton = document.createElement('button');
