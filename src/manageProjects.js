@@ -1,11 +1,16 @@
 import List from './list.js'
 import renderTasks from './renderTasks.js';
+import { populateStorage } from './storageAvailable.js';
 
-export const allLists = [];
-const defaultList = new List('My Tasks');
-allLists.push(defaultList);
+const allLists = [];
+
+function createDefault() {
+    const defaultList = new List('My Tasks');
+    allLists.push(defaultList);
+    setCurrentList(defaultList);
+}
+// currentList = defaultList;
 let currentList;
-currentList = defaultList;
 
 function setCurrentList(selectedList) {
     currentList = selectedList;
@@ -13,13 +18,15 @@ function setCurrentList(selectedList) {
 
 function createList(name) {
     allLists.push(new List(name));
+    populateStorage();
     currentList = allLists[allLists.length - 1];
     renderTasks(currentList);
 }
 
-export function removeList(index) {
+function removeList(index) {
     allLists.splice(index, 1);
-    
+    populateStorage();
+
     if (allLists.length === 0){
         currentList = [];
         const wrapper = document.querySelector('#wrapper');
@@ -33,4 +40,4 @@ export function removeList(index) {
     }
 }
 
-export { currentList, createList, setCurrentList };
+export { currentList, createList, setCurrentList, removeList, allLists, createDefault };

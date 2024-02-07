@@ -1,6 +1,7 @@
 import renderCard from './renderCard.js'
 import Task from './task.js';
 import { currentList } from './manageProjects.js';
+import { populateStorage } from './storageAvailable.js';
 
 newTaskForm();
 const dialog = document.querySelector('#add-task');
@@ -55,7 +56,8 @@ function newTaskForm() {
     })
     
    function submit() {
-        currentList.addTask(new Task(title.value, description.value, date.value, +selectedPriority))
+        currentList.addTask(new Task(title.value, description.value, date.value, +selectedPriority));
+        populateStorage();
         renderTasks(currentList);
         dialog.close();
         document.querySelector('form').reset();

@@ -1,4 +1,5 @@
 import renderTasks from "./renderTasks";
+import { populateStorage } from "./storageAvailable";
 
 export default function renderCard(task, list) {
     let card = document.createElement('div');
@@ -33,6 +34,7 @@ export default function renderCard(task, list) {
     deleteButton.textContent = 'delete';
     deleteButton.addEventListener('click', () => {
         list.removeTask(list.list.indexOf(task));
+        populateStorage();
         renderTasks(list);
     })
 
