@@ -1,66 +1,69 @@
-import renderCard from './renderCard.js'
-import Task from './task.js';
-import { currentList } from './manageProjects.js';
-import { populateStorage } from './storageAvailable.js';
+import renderCard from './renderCard';
+import Task from './task';
+import { getCurrentList } from './manageProjects';
+import { populateStorage } from './storageAvailable';
 
-newTaskForm();
 const dialog = document.querySelector('#add-task');
 
 export default function renderTasks(list) {
-    const wrapper = document.querySelector('#wrapper');
-    const listTitle = document.createElement('h1');
-    wrapper.textContent = '';
-    listTitle.textContent = list.title;
-    wrapper.appendChild(listTitle);
+  const wrapper = document.querySelector('#wrapper');
+  const listTitle = document.createElement('h1');
+  wrapper.textContent = '';
+  listTitle.textContent = list.title;
+  wrapper.appendChild(listTitle);
 
-    const addItemButton = document.createElement('button');
-    addItemButton.classList.add('add-new-task');
-    addItemButton.textContent = 'add new task';
-    addItemButton.addEventListener('click', () => {
-        dialog.showModal();
-    })
+  const addItemButton = document.createElement('button');
+  addItemButton.classList.add('add-new-task');
+  addItemButton.textContent = 'add new task';
+  addItemButton.addEventListener('click', () => {
+    dialog.showModal();
+  });
 
-    wrapper.appendChild(addItemButton);
+  wrapper.appendChild(addItemButton);
 
-    for (let item of list.list) {        
-        wrapper.appendChild(renderCard(item, list));
-    }
+  list.list.forEach((item) => {
+    wrapper.appendChild(renderCard(item, list));
+  });
 }
 
 function newTaskForm() {
-    const title = document.querySelector('#title');
-    
-    let description = document.querySelector('#description');
+  const title = document.querySelector('#title');
 
-    let date = document.querySelector('#date');
+  const description = document.querySelector('#description');
 
-    let priority = document.querySelectorAll('[name="priority"]');
-    let selectedPriority;
-    
-    const submitButton = document.querySelector('#submit-button');
-    submitButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        for (const radioButton of priority) {
-            if (radioButton.checked) {
-                selectedPriority = radioButton.value;
-                break;
-            }
-        }
-        submit();
-    })
+  const date = document.querySelector('#date');
 
-    const cancelButton = document.querySelector('#cancel-button');
-    cancelButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        dialog.close();
-        document.querySelector('form').reset();
-    })
-    
-   function submit() {
-        currentList.addTask(new Task(title.value, description.value, date.value, +selectedPriority));
-        populateStorage();
-        renderTasks(currentList);
-        dialog.close();
-        document.querySelector('form').reset();
-    }
+  const priority = document.querySelectorAll('[name="priority"]');
+  let selectedPriority;
+
+  function submit() {
+    getCurrentList().addTask(
+      new Task(title.value, description.value, date.value, +selectedPriority)
+    );
+    populateStorage();
+    renderTasks(getCurrentList());
+    dialog.close();
+    document.querySelector('form').reset();
+  }
+
+  const submitButton = document.querySelector('#submit-button');
+  submitButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    priority.forEach((radioButton) => {
+      if (radioButton.checked) {
+        selectedPriority = radioButton.value;
+      }
+    });
+
+    submit();
+  });
+
+  const cancelButton = document.querySelector('#cancel-button');
+  cancelButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    dialog.close();
+    document.querySelector('form').reset();
+  });
 }
+
+newTaskForm();
